@@ -4,14 +4,19 @@ require 'element_builder'
 
 container_items = [
   {tag: 'html', attrs: nil, content: [
-    {tag: 'head', attrs: nil, content: nil},
+    {tag: 'head', attrs: nil, content: [
+      {tag: 'link', attrs: {'rel': 'stylesheet', href: '/styles/main.css', 'media': 'all'}, content: nil},
+      {tag: 'link', attrs: {'rel': 'stylesheet', href: '/styles/custom.css', 'media': 'all'}, content: nil}
+    ]},
     {tag: 'body', attrs: nil, content: [
-      {tag: 'video', attrs: {src: 'https://www.youtube.com/embed/AiS_j5e9wt0?rel=0&amp;showinfo=0', width: '854', height: '480', controls: nil}, content: {tag: 'p', content: 'If you are reading this, it means your browser does not support html5'}}
+      {tag: 'div', attrs: {'id': 'main', class: 'wrapper main-wrapper'}, content: [
+        {tag: 'h1', attrs: nil, content: 'Home Page'}
+      ]}
     ]}
   ]}
 ]
 
-html = ElementBuilder.create_html(container_items)
+html = ElementBuilder.create_html(container_items, true)
 puts html
 
 %>

@@ -1,9 +1,9 @@
 class Builder
 
   def build_html(arr, include_doctype = false)
-    tmp_html = include_doctype ? build_doctype : ""
-    arr.each { |i| tmp_html += build_element(i[:tag], i[:attrs], i[:content]) }
-    tmp_html
+    html = include_doctype ? build_doctype : ""
+    arr.each { |i| html += build_element(i[:tag], i[:attrs], i[:content]) if hash_contains_tag?(i) } if arr.class == Array
+    html
   end
   
   private
@@ -33,7 +33,13 @@ class Builder
   end
 
   def build_element(tag, attrs, content)
-    format(element_format(tag), tag, attrs.nil? ? '' : ' ' + build_attrs(attrs), content.nil? ? '' : handle_content(content), tag)
+    format(element_format(tag), tag, attrs.class == Hash ? build_attrs(attrs) : '', content.nil? ? '' : handle_content(content), tag)
+  end
+  
+  def hash_contains_tag?(hash)
+    valid = false
+    hash.each { |i| valid = true if hash.include?(:tag) }
+    valid
   end
   
 end
