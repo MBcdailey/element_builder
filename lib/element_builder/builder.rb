@@ -20,7 +20,7 @@ class Builder
     %w(async autocomplete autofocus autoplay border challenge checked compact contenteditable controls default defer 
        disabled formNoValidate frameborder hidden indeterminate ismap loop multiple muted nohref noresize noshade 
        novalidate nowrap open readonly required reversed scoped scrolling seamless selected sortable spellcheck 
-       translate).include?(attr.to_s) ? "%s" : "%s=\"%s\""
+       translate playsinline).include?(attr.to_s) ? "%s" : "%s=\"%s\""
   end
   
   def build_attrs(attrs)
@@ -33,7 +33,7 @@ class Builder
   end
 
   def build_element(tag, attrs, content)
-    format(element_format(tag), tag, attrs.class == Hash ? build_attrs(attrs) : '', content.nil? ? '' : handle_content(content), tag)
+    format(element_format(tag), tag, attrs.class == Hash ? ' ' + build_attrs(attrs) : '', content.nil? ? '' : handle_content(content), tag)
   end
   
   def hash_contains_tag?(hash)
