@@ -18,7 +18,7 @@ gem build element_builder.gemspec
 Install the gem.
 
 ```
-gem install element_builder-1.0.0.gem
+gem install element_builder-1.0.1.gem
 ```
 
 ### Usage
