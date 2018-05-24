@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name        = 'element_builder'
-  s.version     = '1.0.0'
-  s.date        = '2018-05-18'
+  s.version     = '1.0.1'
+  s.date        = '2018-05-24'
   s.summary     = "Generates valid html from an array of hashes."
   s.description = "Generates valid html from an array of hashes. Build a simple video tag or an entire document."
   s.authors     = ["Chad Dailey"]
